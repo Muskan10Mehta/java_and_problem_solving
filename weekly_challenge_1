@@ -1,0 +1,233 @@
+Weekly Challenge 1 : Time Complexity
+https://www.interviewbit.com/courses/programming/topics/time-complexity
+
+Date : 24/09/2021
+Muskan, 1910990681
+
+Q1: What is the time, space complexity of following code :
+       int a = 0, b = 0;    
+        for (i = 0; i < N; i++) {
+            a = a + rand();  
+        }
+        for (j = 0; j < M; j++) {
+            b = b + rand();
+        }
+
+       Assume that rand() is O(1) time, O(1) space function.
+A1: Time Complexity : O(N + M)
+        Space Complexity :  O(1)
+
+Since there are two loops that run for N and M times, therefore Time complexity will be O(N +    M) with space complexity of O(1) (given).
+
+---------------------------------------------------------------------------------------------------
+Q2: What is the time, space complexity of following code :
+    int a = 0, b = 0;    
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            a = a + j;
+        }
+    }
+    for (k = 0; k < N; k++) {
+        b = b + k;
+    }
+
+A2: Time Complexity : O(N * N) time
+        Space Complexity : O(1) space
+
+       For the first for nested loop the time complexity will be - N^2
+       For second for loop time complexity will - N
+       Total time = N^2 + N
+According to the time complexity rule, we will ignore the lower power variables, and pick the one that takes most time
+       So time complexity will be O(N * N) with space complexity of O(1)
+
+---------------------------------------------------------------------------------------------------
+Q3: What is the time complexity of the following code :
+    int a = 0;
+    for (i = 0; i < N; i++) {
+        for (j = N; j > i; j--) {
+            a = a + i + j;
+        }
+}
+A3: Time Complexity: O(N*N)
+       Space Complexity: O(1)
+
+The two nested for loops run N * N times (for every N of outer loop inner loops runs N times)
+Hence, time complexity is O(N).
+
+---------------------------------------------------------------------------------------------------
+Q4: What does it mean when we say that an algorithm X is asymptotically more efficient than Y?
+A4: 
+
+---------------------------------------------------------------------------------------------------
+Q5: What is the time complexity of the following code :
+        int a = 0, i = N;
+        while (i > 0) {
+            a += i;
+            i /= 2;
+ }
+A5: Time Complexity : O(log N)
+       Space Complexity : O(1)
+
+      After iteration i becomes i/2
+      So until N becomes zero, it will be N, N/2, N/4… =  N/2^n 
+      n = logN
+---------------------------------------------------------------------------------------------------
+Q6: What is time complexity of following code :
+       int count = 0;
+        for (int i = N; i > 0; i /= 2) {
+            for (int j = 0; j < i; j++) {
+                count += 1;
+            }
+    }
+A6: Time Complexity : O(N)
+       Space Complexity : O(1)
+ 
+       Outerloop runs N + N/2 + N/4 + ….. time
+       Inner loop runs for the same time
+       = 2(N + N/2 + N/4 + ….)
+       = 2N(1 + 1/2 + 1/4).....
+       Ignore all constants
+       Ans : O(N)
+---------------------------------------------------------------------------------------------------       
+Q7: What is the time complexity of the following code :
+    int i, j, k = 0;
+    for (i  = n/2; i <= n; i++) {
+        for (j = 2; j <= n; j = j * 2) {
+            k = k + n/2;
+        }
+    }
+
+A7: Time Complexity : O(N(logN))
+       Space : O(1)
+
+      Outer loop runs N/2 times 
+      For every N/2 inner loop runs 2^N times ie logN times
+
+---------------------------------------------------------------------------------------------------
+Q8: In the following C++ function, let n >= m.
+   int gcd(int n, int m) {
+            if (n%m ==0) return m;
+            if (n < m) swap(n, m);
+            while (m > 0) {
+                n = n%m;
+                swap(n, m);
+            }
+            return n;
+    }
+      What is the time complexity of the above function assuming n > m?
+A8: Time Complexity :  θ (logn)
+       Space Complexity : O(1)
+
+---------------------------------------------------------------------------------------------------      
+Q9: In a competition, four different functions are observed. All the functions use a single for loop and within the for loop, the same set of statements are executed.
+
+Consider the following for loops:
+  A) for(i = 0; i < n; i++)
+ 
+  B) for(i = 0; i < n; i += 2)
+ 
+  C) for(i = 1; i < n; i *= 2)
+ 
+  D) for(i = n; i > -1; i /= 2)
+
+If n is the size of input(positive), which function is the most efficient? In other words, which loop completes the fastest.
+
+A9: C as the time complexity for this loop is O(logN).
+
+---------------------------------------------------------------------------------------------------
+Q10: Which of the following is not bounded by O(n^2)? (upper bound greater tha O(n^2))
+ (15^10) * n + 12099  O(n) < O(n^2)
+ n^1.98                          < O(n^2)
+ n^3 / (sqrt(n))             > O(n^2)
+ (2^20) * n                    O(n) < O(n^2)
+ 
+A10: C is not bounded by O(n^2) 
+
+---------------------------------------------------------------------------------------------------
+Q11: Which of the given options provides the increasing order of complexity of functions f1, f2, f3 and f4:
+f1(n) = 2^n
+
+f2(n) = n^(3/2)
+
+f3(n) = nLogn
+
+f4(n) = n^(Logn)
+
+A11: f3, f2, f4,f1
+
+---------------------------------------------------------------------------------------------------
+Q12: What is the worst case time complexity of the following code :
+/* 
+ * V is sorted 
+ * V.size() = N
+ * The function is initially called as searchNumOccurrence(V, k, 0, N-1)
+ */
+int searchNumOccurrence(vector<int> &V, int k, int start, int end) {
+    if (start > end) return 0;
+    int mid = (start + end) / 2;
+    if (V[mid] < k) return searchNumOccurrence(V, k, mid + 1, end);
+    if (V[mid] > k) return searchNumOccurrence(V, k, start, mid - 1);
+    return searchNumOccurrence(V, k, start, mid - 1) + 1 + searchNumOccurrence(V, k, mid + 1, end);
+}
+A12: Time Complexity :  O(N)
+       Space Complexity : O(N)
+---------------------------------------------------------------------------------------------------
+Q13: What is the worst case time complexity of the following code:
+int findMinPath(vector<vector<int> > &V, int r, int c) {
+  int R = V.size();
+  int C = V[0].size();
+  if (r >= R || c >= C) return 100000000; // Infinity
+  if (r == R - 1 && c == C - 1) return 0;
+  return V[r][c] + min(findMinPath(V, r + 1, c), findMinPath(V, r, c + 1));
+}
+Assume R = V.size() and C = V[0].size().
+
+A13: Time Complexity: O()
+     Space Complexity: O()
+---------------------------------------------------------------------------------------------------
+Q14: What is the worst case time complexity of the following code:
+int memo[101][101];
+int findMinPath(vector<vector<int> >& V, int r, int c) {
+  int R = V.size();
+  int C = V[0].size();
+  if (r >= R || c >= C) return 100000000; // Infinity
+  if (r == R - 1 && c == C - 1) return 0;
+  if (memo[r][c] != -1) return memo[r][c];
+  memo[r][c] =  V[r][c] + min(findMinPath(V, r + 1, c), findMinPath(V, r, c + 1));
+  return memo[r][c];
+}
+
+Callsite : 
+memset(memo, -1, sizeof(memo));
+findMinPath(V, 0, 0);
+ 
+Assume R = V.size() and C = V[0].size() and V has positive elements
+A14: Time Complexity : 
+     Space Complexity : 
+---------------------------------------------------------------------------------------------------
+Q15: What is the time complexity of the following code :
+       int j = 0;
+        for(int i = 0; i < n; ++i) {
+            while(j < n && arr[i] < arr[j]) {
+                j++;
+            }
+        }
+A15: Time Complexity : O(N)
+     Space Complexity : O(1)
+     The iterator for the inner loop, j, is not reset to 0 in the inner loop, and will increase to n 
+     only once (for both loops) and outer loop runs for N timesThe time complexity is 2n or n.
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+          
+
+  
+
+
