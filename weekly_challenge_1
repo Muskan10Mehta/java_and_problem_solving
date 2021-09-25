@@ -116,8 +116,9 @@ Q8: In the following C++ function, let n >= m.
     }
       What is the time complexity of the above function assuming n > m?
 A8: Time Complexity :  θ (logn)
-       Space Complexity : O(1)
+    Space Complexity : O(1)
 
+    Everytime we mod the number it reduces by half.
 ---------------------------------------------------------------------------------------------------      
 Q9: In a competition, four different functions are observed. All the functions use a single for loop and within the for loop, the same set of statements are executed.
 
@@ -171,6 +172,7 @@ int searchNumOccurrence(vector<int> &V, int k, int start, int end) {
 }
 A12: Time Complexity :  O(N)
        Space Complexity : O(N)
+
 ---------------------------------------------------------------------------------------------------
 Q13: What is the worst case time complexity of the following code:
 int findMinPath(vector<vector<int> > &V, int r, int c) {
@@ -182,8 +184,9 @@ int findMinPath(vector<vector<int> > &V, int r, int c) {
 }
 Assume R = V.size() and C = V[0].size().
 
-A13: Time Complexity: O()
-     Space Complexity: O()
+A13: Time Complexity: O(2^(R + C))
+     Space Complexity: O(N)
+
 ---------------------------------------------------------------------------------------------------
 Q14: What is the worst case time complexity of the following code:
 int memo[101][101];
@@ -202,8 +205,9 @@ memset(memo, -1, sizeof(memo));
 findMinPath(V, 0, 0);
  
 Assume R = V.size() and C = V[0].size() and V has positive elements
-A14: Time Complexity : 
+A14: Time Complexity : O(R * C)
      Space Complexity : 
+ 
 ---------------------------------------------------------------------------------------------------
 Q15: What is the time complexity of the following code :
        int j = 0;
@@ -214,20 +218,8 @@ Q15: What is the time complexity of the following code :
         }
 A15: Time Complexity : O(N)
      Space Complexity : O(1)
+
      The iterator for the inner loop, j, is not reset to 0 in the inner loop, and will increase to n 
-     only once (for both loops) and outer loop runs for N timesThe time complexity is 2n or n.
+     only once (for both loops) and outer loop runs for N times. The time complexity is 2n, after ignoring constant it will be n.
+
 ---------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-          
-
-  
-
-
