@@ -56,7 +56,7 @@ Hence, time complexity is O(N).
 
 ---------------------------------------------------------------------------------------------------
 Q4: What does it mean when we say that an algorithm X is asymptotically more efficient than Y?
-A4: 
+A4: X is better when it takes less time to compute for larger inputs of N than Y.
 
 ---------------------------------------------------------------------------------------------------
 Q5: What is the time complexity of the following code :
@@ -84,10 +84,10 @@ A6: Time Complexity : O(N)
  
        Outerloop runs N + N/2 + N/4 + ….. time
        Inner loop runs for the same time
-       = 2(N + N/2 + N/4 + ….)
-       = 2N(1 + 1/2 + 1/4).....
+       = N(1 + 1/2 + 1/4)..... = sum of GP ~2N (a/1-r)
        Ignore all constants
        Ans : O(N)
+
 ---------------------------------------------------------------------------------------------------       
 Q7: What is the time complexity of the following code :
     int i, j, k = 0;
